@@ -1,21 +1,25 @@
 #Stub for the entry class
+require 'rubygems'
 require 'open-uri'
+require 'zip/zip'
 
 module StartProject
   class Downloader
-    
-    HTMl5_URI = "https://github.com/h5bp/html5-boilerplate/zipball/master"
-    def download
-      open('html5.zip','wb') do |fo|
-        fo.print open(HTML5_URI).read
+    def self.download(source)
+      open("temp.zip",'wb') do |fo|
+        fo.print open(source).read
       end
-      
-      extract
     end
-
-    def extract
-      
+    
+    def self.unzip_file (destination)
+      Zip::ZipFile.open("temp.zip") { |zip_file|
+       zip_file.each { |f|
+         f_path=File.join(destination, f.name)
+         FileUtils.mkdir_p(File.dirname(f_path))
+         zip_file.extract(f, f_path) unless File.exist?(f_path)
+       }
+      }
+      File.delete("temp.zip")
     end
-
   end
 end

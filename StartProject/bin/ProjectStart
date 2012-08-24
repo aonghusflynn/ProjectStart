@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
-require 'start_project'
-StartProject.new
+require 'start_project/runner'
+runner = StartProject::Runner.new(ARGV)
+runner.run

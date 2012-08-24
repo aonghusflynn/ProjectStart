@@ -9,5 +9,6 @@ Gem::Specification.new do |s|
   s.email       = 'developer@aonghusflynn.com'
   s.files       = ["**/**"]
   s.homepage    = 'http://rubygems.org/gems/start_project'
+  s.add_dependency('rubyzip')
   s.required_ruby_version = '>=1.8.7'
 end
