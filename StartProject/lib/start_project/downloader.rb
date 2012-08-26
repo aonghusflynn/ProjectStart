@@ -12,13 +12,16 @@ module StartProject
     end
     
     def self.unzip_file (destination)
+      orig_name = ""
       Zip::ZipFile.open("temp.zip") { |zip_file|
        zip_file.each { |f|
-         f_path=File.join(destination, f.name)
+         f_path=File.join("./", f.name)
+         orig_name = f_path.split('/')[1]
          FileUtils.mkdir_p(File.dirname(f_path))
          zip_file.extract(f, f_path) unless File.exist?(f_path)
        }
       }
+      File.rename(orig_name, destination)
       File.delete("temp.zip")
     end
   end

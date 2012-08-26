@@ -24,7 +24,7 @@ module StartProject
         
         opts.on("-t","--type html5|bootstrap", String, "Type of project") do |type|
           if(type=='bootstrap')
-             @project_uri = ""
+             @project_uri = "https://github.com/twitter/bootstrap/zipball/master"
            else
              @project_uri = "https://github.com/h5bp/html5-boilerplate/zipball/master"
            end

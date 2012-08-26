@@ -8,7 +8,6 @@ module StartProject
     
     def run
       Downloader.download(@options.project_uri)
-      puts @options.project_name
       Downloader.unzip_file(@options.project_name)
     end
     
