@@ -3,7 +3,7 @@ module StartProject
   class Options
     # TODO
     # 1. Create a class to store/read from YAML, all the different frameworks possible
-    # 2. Clean up the unpacking
+    # 2. Clean up the unpacking - Done
     # 3. Create Tests
     # 4. Write documentation
     
