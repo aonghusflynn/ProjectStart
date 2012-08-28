@@ -17,7 +17,7 @@ module StartProject
 
     def initialize(argv)
       @frameworks = begin
-	 YAML.load_file('config.yaml')
+	 YAML.load_file(File.join(File.dirname(__FILE__),'config.yaml'))
       rescue ArgumentError => e
          puts "Could not parse YAML #{e.message}"
       end
