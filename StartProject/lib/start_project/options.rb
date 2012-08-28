@@ -1,4 +1,6 @@
 require 'optparse'
+require 'yaml'
+
 module StartProject
   class Options
     # TODO
@@ -11,9 +13,16 @@ module StartProject
     DEFAULT_TYPE = "html5"
     attr_reader :project_uri
     attr_reader :project_name
-    
+    attr_reader :frameworks
+
     def initialize(argv)
-      @project_uri = "https://github.com/h5bp/html5-boilerplate/zipball/master"
+      @frameworks = begin
+	 YAML.load_file('config.yaml')
+      rescue ArgumentError => e
+         puts "Could not parse YAML #{e.message}"
+      end
+
+      @project_uri = @frameworks[:html5]
       parse(argv)
     end
     
@@ -23,11 +32,7 @@ module StartProject
         opts.banner = "Usage: ProjectStart -t [ html5 | bootstrap] -n projectName"
         
         opts.on("-t","--type html5|bootstrap", String, "Type of project") do |type|
-          if(type=='bootstrap')
-             @project_uri = "https://github.com/twitter/bootstrap/zipball/master"
-           else
-             @project_uri = "https://github.com/h5bp/html5-boilerplate/zipball/master"
-           end
+             @project_uri = @frameworks[type.to_sym]
         end
         
         opts.on("-n","--name projectName", String, "Name of project") do |name|

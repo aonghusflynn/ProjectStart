@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 require 'start_project/runner'
+
+puts Dir.pwd
 runner = StartProject::Runner.new(ARGV)
 runner.run
