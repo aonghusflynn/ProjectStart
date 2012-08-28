@@ -1,4 +1,6 @@
 ---
 !ruby/sym html5:  'https://github.com/h5bp/html5-boilerplate/zipball/master'
 !ruby/sym bootstrap:  'https://github.com/twitter/bootstrap/zipball/master'
-
+!ruby/sym gs960:  'https://github.com/nathansmith/960-Grid-System/zipball/master'
+!ruby/sym andup320:  'https://github.com/malarkey/320andup/zipball/master'
+!ruby/sym mass:  'https://github.com/RubyLouvre/mass-Framework/zipball/master'

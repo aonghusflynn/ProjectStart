@@ -3,21 +3,26 @@ require 'yaml'
 
 module StartProject
   class Options
-    # TODO
-    # 1. Create a class to store/read from YAML, all the different frameworks possible
-    # 2. Clean up the unpacking - Done
-    # 3. Create Tests
-    # 4. Write documentation
     
+    # Read the arguments from the command line and parse them out
     
-    DEFAULT_TYPE = "html5"
+    # project_uri stores the url of the framework
     attr_reader :project_uri
+    
+    # project_name stores the name of the folder that the final project will live in
     attr_reader :project_name
+    
+    # frameworks stores the framework details loaded from the config.yaml
     attr_reader :frameworks
-
+    
+    
+    # = initialize
+    # Initializes the options object, loads the config.yaml that stores all the frameworks available 
+    # and sets a default framework: html5 boilerplate.
+    # Finally, it calls the parse method.
     def initialize(argv)
       @frameworks = begin
-	 YAML.load_file(File.join(File.dirname(__FILE__),'config.yaml'))
+      YAML.load_file(File.join(File.dirname(__FILE__),'config.yaml'))
       rescue ArgumentError => e
          puts "Could not parse YAML #{e.message}"
       end
@@ -26,7 +31,11 @@ module StartProject
       parse(argv)
     end
     
-    private 
+    # = parse
+    # This method reads the options from the command line and acts apropriately.
+    # If the user specifies a type (-t or --type), it sets the @project_uri to the location of the framework on the Internet.
+    # If the user specifies a name (-n or --name), it sets the @project_name.
+     private 
     def parse(argv)
       OptionParser.new do |opts|
         opts.banner = "Usage: ProjectStart -t [ html5 | bootstrap] -n projectName"
