@@ -1,10 +1,13 @@
 require 'optparse'
 require 'yaml'
-
+# This module encapsulates all the functionality in the module
+# It has 3 classes
+# * Options
+# * Downloader
+# * Runner
 module StartProject
+  # Read the arguments from the command line and parse them out
   class Options
-    
-    # Read the arguments from the command line and parse them out
     
     # project_uri stores the url of the framework
     attr_reader :project_uri
@@ -16,7 +19,6 @@ module StartProject
     attr_reader :frameworks
     
     
-    # = initialize
     # Initializes the options object, loads the config.yaml that stores all the frameworks available 
     # and sets a default framework: html5 boilerplate.
     # Finally, it calls the parse method.
@@ -50,6 +52,8 @@ module StartProject
         
         opts.on("-h", "--help", "Show this message") do 
           puts opts
+					puts 'Available framework options are as follows:'
+					@frameworks.each_key{|key| puts key.to_s}
           exit
         end
         

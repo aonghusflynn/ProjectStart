@@ -4,13 +4,17 @@ require 'open-uri'
 require 'zip/zip'
 
 module StartProject
+
+  # Manages the downloading and unzipping the file 
   class Downloader
+    # Downloads the relevant zip and stores it in a file called temp.zip
     def self.download(source)
       open("temp.zip",'wb') do |fo|
         fo.print open(source).read
       end
     end
     
+    # Unzip the file into a directory specified in the intitial call to the app via the -n (--name option)
     def self.unzip_file (destination)
       orig_name = ""
       Zip::ZipFile.open("temp.zip") { |zip_file|
