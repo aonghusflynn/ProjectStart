@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'start_project'
-  s.version     = '0.0.7'
+  s.version     = '0.0.8'
   s.date        = '2012-08-28'
   s.summary     = "Create html projects"
   s.description = File.read(File.join(File.dirname(__FILE__),'README' ))

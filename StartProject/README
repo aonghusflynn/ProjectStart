@@ -2,8 +2,12 @@ The start_project gem is a simple way of downloading the latest version of your 
 
 It's very easy to use: simply install the gem as normal with gem install start_project and then run the command line tool ProjectStart --type {framework} --name {name of project} and it will pull the latest version of the framework and extract it to your machine with the name you provided.
 
-Currently, there are only 2 frameworks: html 5 boilerplate and bootstrap, but I'll be adding more in the future.
+Currently, there are 5 frameworks: html 5 boilerplate, bootstrap, 960 grid, 320 and up, and mass
+gs960
+andup320
+mass, but I'll be adding more in the future.
 
 You can fork the source on github here: https://github.com/aonghusflynn/ProjectStart
 
 You can find my blog here: http://www.aonghusflynn.com
+
